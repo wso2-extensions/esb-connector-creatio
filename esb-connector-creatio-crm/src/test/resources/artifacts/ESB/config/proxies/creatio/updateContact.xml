@@ -32,9 +32,9 @@
         <property name="ContentType" value="application/json" scope="axis2"/>
         <property name="messageType" value="application/json" scope="axis2"/>
         <creatiocrm.init>
-            <creatioHostName>https://118269-crm-bundle.creatio.com</creatioHostName>
-            <creatioPassword>Supervisor</creatioPassword>
-            <creatioUsername>Supervisor</creatioUsername>
+            <creatioHostName>https://creatio-host-name.com</creatioHostName>
+            <creatioPassword>adminpassword</creatioPassword>
+            <creatioUsername>adminusername</creatioUsername>
         </creatiocrm.init>
         <creatiocrm.contactUpdate>
             <id>{$ctx:id}</id>
