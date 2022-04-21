@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="updateCase"
+       startOnLoad="true"
+       statistics="disable"
+       trace="disable"
+       transports="http,https">
+    <target>
+        <inSequence>
+            <property name="caseId" expression="get-property('axis2', 'REST_URL_POSTFIX')"/>
+            <log description="config" level="custom">
+                <property expression="$ctx:contactId" name="caseId......."/>
+            </log>
+            <property expression="fn:substring($ctx:caseId, 12,36)" name="id" scope="default" type="STRING"/>
+            <log description="config" level="custom">
+                <property expression="$ctx:id" name="id......."/>
+            </log>
+
+            <payloadFactory media-type="json">
+                <format> {
+                    "UsrString7": "API Test",
+                    "UsrString10": "test1",
+                    "UsrString11": "test1",
+                    "UsrEmail" : "test@example.com"
+                    }
+                </format>
+            </payloadFactory>
+            <property name="ContentType" value="application/json" scope="axis2"/>
+            <property name="messageType" value="application/json" scope="axis2"/>
+            <creatiocrm.init>
+                <creatioHostName>https://118269-crm-bundle.creatio.com</creatioHostName>
+                <creatioPassword>Supervisor</creatioPassword>
+                <creatioUsername>Supervisor</creatioUsername>
+            </creatiocrm.init>
+            <creatiocrm.caseUpdate>
+                <id>{$ctx:id}</id>
+            </creatiocrm.caseUpdate>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </target>
+    <description/>
+</proxy>

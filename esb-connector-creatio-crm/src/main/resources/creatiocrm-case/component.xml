@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="creatiocrm-case" type="synapse/template">
+    <subComponents>
+        <component name="caseCreate">
+            <file>caseCreate.xml</file>
+            <description>Create the Case</description>
+        </component>
+        <component name="caseGet">
+            <file>caseGet.xml</file>
+            <description>get the Case using ID</description>
+        </component>
+        <component name="caseDelete">
+            <file>caseDelete.xml</file>
+            <description>Delete the Case using ID</description>
+        </component>
+        <component name="caseUpdate">
+            <file>caseUpdate.xml</file>
+            <description>Update the Case </description>
+        </component>
+    </subComponents>
+</component>

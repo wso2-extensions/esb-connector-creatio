@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="creatiocrm-contact" type="synapse/template">
+    <subComponents>
+        <component name="contactCreate">
+            <file>contactCreate.xml</file>
+            <description>Create the contact</description>
+        </component>
+        <component name="contactGet">
+            <file>contactGet.xml</file>
+            <description>get the Contact using ID</description>
+        </component>
+        <component name="contactDelete">
+            <file>contactDelete.xml</file>
+            <description>Delete the contact using ID</description>
+        </component>
+        <component name="contactUpdate">
+            <file>contactUpdate.xml</file>
+            <description>Update the contact </description>
+        </component>
+    </subComponents>
+</component>

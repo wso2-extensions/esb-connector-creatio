@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="creatiocrm-config" type="synapse/template">
+    <subComponents>
+        <component name="init">
+            <file>init.xml</file>
+            <description>Initial configuration file for Creatio CRM connector</description>
+        </component>
+        <component name="callWithRetry">
+            <file>callWithRetry.xml</file>
+            <description>Templating the retry call</description>
+        </component>
+        <component name="callOptions">
+            <file>callOptions.xml</file>
+            <description>Templating the http call types GET, PUT, POST, DELETE etc.</description>
+        </component>
+        <component name="creatioCRMRequestHeader">
+            <file>creatioCRMRequestHeader.xml</file>
+            <description>Creatio CRM APIs headers </description>
+        </component>
+        <component name="authSession">
+            <file>authSession.xml</file>
+            <description>Creatio CRM APIs headers </description>
+        </component>
+    </subComponents>
+</component>

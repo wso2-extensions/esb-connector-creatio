@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connector>
+    <component name="creatiocrm" package="org.wso2.carbon.connector">
+        <dependency component="creatiocrm-config"/>
+        <dependency component="creatiocrm-contact"/>
+        <dependency component="creatiocrm-case"/>
+        <dependency component="creatiocrm-account"/>
+        <description>wso2 connector for creatiocrm REST API</description>
+    </component>
+    <icon>icon/icon-small.png</icon>
+</connector>

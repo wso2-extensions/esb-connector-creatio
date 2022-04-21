@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="callOptions" xmlns="http://ws.apache.org/ns/synapse">
+    <sequence>
+        <property name="Accept-Encoding" scope="transport" action="remove"/>
+        <filter source="$ctx:httpMethod" regex="put|post|patch">
+            <enrich>
+                <source clone="true" property="ORIGINAL_MSG_PAYLOAD" type="property"/>
+                <target type="body"/>
+            </enrich>
+        </filter>
+        <log description="header" level="custom">
+            <property expression="$ctx:uri.var.callCreatioEndpointUri" name="caller Endpoint Uri....."/>
+            <property expression="$ctx:httpMethod" name="Method Type....."/>
+        </log>
+        <creatiocrm.creatioCRMRequestHeader/>
+        <property name="REST_URL_POSTFIX" action="remove" scope="axis2"/>
+        <filter source="$ctx:httpMethod" regex="get">
+            <call>
+                <endpoint>
+                    <http method="get"
+                          uri-template="{uri.var.callCreatioEndpointUri}">
+                        <timeout>
+                            <duration>{$ctx:timeout}</duration>
+                            <responseAction>fault</responseAction>
+                        </timeout>
+                    </http>
+                </endpoint>
+            </call>
+        </filter>
+        <filter source="$ctx:httpMethod" regex="post">
+            <call>
+                <endpoint>
+                    <http method="post"
+                          uri-template="{uri.var.callCreatioEndpointUri}">
+                        <timeout>
+                            <duration>{$ctx:timeout}</duration>
+                            <responseAction>fault</responseAction>
+                        </timeout>
+                    </http>
+                </endpoint>
+            </call>
+        </filter>
+        <!--for HTTP method DELETE-->
+        <filter source="$ctx:httpMethod" regex="delete">
+            <call>
+                <endpoint>
+                    <http method="delete"
+                          uri-template="{uri.var.callCreatioEndpointUri}">
+                        <timeout>
+                            <duration>{$ctx:timeout}</duration>
+                            <responseAction>fault</responseAction>
+                        </timeout>
+                    </http>
+                </endpoint>
+            </call>
+       </filter>
+        <!--for HTTP method PUT-->
+        <filter source="$ctx:httpMethod" regex="put">
+            <call>
+                <endpoint>
+                    <http method="put"
+                          uri-template="{uri.var.callCreatioEndpointUri}">
+                        <timeout>
+                            <duration>{$ctx:timeout}</duration>
+                            <responseAction>fault</responseAction>
+                        </timeout>
+                    </http>
+                </endpoint>
+            </call>
+        </filter>
+        <filter source="$ctx:httpMethod" regex="patch">
+            <call>
+                <endpoint>
+                    <http method="patch"
+                          uri-template="{uri.var.callCreatioEndpointUri}">
+                        <timeout>
+                            <duration>{$ctx:timeout}</duration>
+                            <responseAction>fault</responseAction>
+                        </timeout>
+                    </http>
+                </endpoint>
+            </call>
+        </filter>
+        <log description="header" level="custom">
+             <property expression="$axis2:HTTP_SC" name="HTTP Status....."/>
+        </log>
+    </sequence>
+</template>

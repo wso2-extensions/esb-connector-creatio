@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="contactDelete" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="id" description="The Id of the object will be going to delete"/>
+    <sequence>
+        <property name="callEndpointUri" expression="fn:concat('/0/odata/Contact/',$func:id)"/>
+        <property name="httpMethod" value="delete"/>
+        <creatiocrm.callWithRetry/>
+    </sequence>
+</template>

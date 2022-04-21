@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="callWithRetry" xmlns="http://ws.apache.org/ns/synapse">
+    <sequence>
+        <log description="header" level="custom">
+            <property expression="$ctx:callEndpointUri" name="callEndpointUri......"/>
+            <property expression="$ctx:creatioHostName" name="creatioHostName......"/>
+        </log>
+        <filter source="$ctx:httpMethod" regex="put|post|patch">
+            <enrich>
+                <source clone="true" type="body"/>
+                <target property="ORIGINAL_MSG_PAYLOAD" type="property"/>
+            </enrich>
+        </filter>
+        <filter  xpath="boolean($trp:BPMCSRF)">
+            <then>
+            </then>
+            <else>
+                <creatiocrm.authSession/>
+            </else>
+        </filter>
+        <property name="uri.var.callCreatioEndpointUri" expression="fn:concat($ctx:creatioHostName, $ctx:callEndpointUri)"/>
+        <creatiocrm.callOptions/>
+        <log description="header" level="custom">
+            <property expression="$axis2:HTTP_SC" name="HttpStatus....."/>
+        </log>
+        <property name="httpCode" expression="$axis2:HTTP_SC" scope="default" type="STRING"/>
+        <filter source="$ctx:httpCode" regex="[3-4][0-9][0-9]">
+            <then>
+                <creatiocrm.authSession/>
+                <creatiocrm.callOptions/>
+            </then>
+        </filter>
+    </sequence>
+</template>

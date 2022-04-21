@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="creatioCRMRequestHeader" xmlns="http://ws.apache.org/ns/synapse">
+    <sequence>
+        <filter source="boolean($ctx:BPMCSRF)" regex="true">
+            <then>
+                <header expression="$ctx:BPMCSRF" name="BPMCSRF" scope="transport"/>
+                <header expression="$ctx:authCompleteCookie" name="Cookie" scope="transport" type="STRING"/>
+            </then>
+            <else>
+            </else>
+        </filter>
+        <header value="true" name="ForceUseSession" scope="transport"/>
+        <header value="application/json;odata=verbose" name="Accept" scope="transport"/>
+        <property name="DISABLE_CHUNKING" value="true" scope="axis2"/>
+        <filter source="$ctx:httpMethod" regex="post|put|patch">
+            <header value="application/json; charset=utf-8" name="Content-Type" scope="transport"/>
+        </filter>
+    </sequence>
+</template>

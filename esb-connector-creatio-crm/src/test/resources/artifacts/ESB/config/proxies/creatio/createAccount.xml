@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="postAccount"
+       startOnLoad="true"
+       statistics="disable"
+       trace="disable"
+       transports="http,https">
+    <target>
+        <inSequence>
+            <property name="httpMethod" value="post"/>
+            <creatiocrm.init>
+                <creatioHostName>https://118269-crm-bundle.creatio.com</creatioHostName>
+                <creatioPassword>Supervisor</creatioPassword>
+                <creatioUsername>Supervisor</creatioUsername>
+            </creatiocrm.init>
+            <creatiocrm.accountCreate/>
+            <respond/>
+            <send/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </target>
+    <description/>
+</proxy>

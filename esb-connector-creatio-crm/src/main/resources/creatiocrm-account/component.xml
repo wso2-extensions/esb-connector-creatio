@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="creatiocrm-account" type="synapse/template">
+    <subComponents>
+        <component name="accountCreate">
+            <file>accountCreate.xml</file>
+            <description>Create the account</description>
+        </component>
+        <component name="accountGet">
+            <file>accountGet.xml</file>
+            <description>get the account using ID</description>
+        </component>
+        <component name="accountDelete">
+            <file>accountDelete.xml</file>
+            <description>Delete the account using ID</description>
+        </component>
+        <component name="accountUpdate">
+            <file>accountUpdate.xml</file>
+            <description>Update the account </description>
+        </component>
+    </subComponents>
+</component>

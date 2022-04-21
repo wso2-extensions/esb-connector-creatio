@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="updateContact"
+       startOnLoad="true"
+       statistics="disable"
+       trace="disable"
+       transports="http,https">
+<target>
+    <inSequence>
+        <property name="contactId" expression="get-property('axis2', 'REST_URL_POSTFIX')"/>
+        <log description="config" level="full">
+            <property expression="$ctx:contactId" name="contactId.update......"/>
+        </log>
+        <property expression="fn:substring($ctx:contactId, 12,36)" name="id" scope="default" type="STRING"/>
+        <log description="config" level="custom">
+            <property expression="$ctx:id" name="id......."/>
+        </log>
+        <payloadFactory media-type="json">
+        <format> {
+    "Name": "API Test Updating",
+    "AccountId": "e6574af1-3e92-4099-958e-e798f52ee016",
+    "JobTitle": "Marketing manager",
+    "BirthDate": "0001-01-01T00:00:00Z",
+    "Phone": "",
+    "MobilePhone": "+1 213 566 34 22",
+    "Email": "test@gmail",
+    "Completeness": 30,
+    "Age": 19
+            }
+        </format>
+        </payloadFactory>
+        <property name="ContentType" value="application/json" scope="axis2"/>
+        <property name="messageType" value="application/json" scope="axis2"/>
+        <creatiocrm.init>
+            <creatioHostName>https://118269-crm-bundle.creatio.com</creatioHostName>
+            <creatioPassword>Supervisor</creatioPassword>
+            <creatioUsername>Supervisor</creatioUsername>
+        </creatiocrm.init>
+        <creatiocrm.contactUpdate>
+            <id>{$ctx:id}</id>
+        </creatiocrm.contactUpdate>
+        <respond/>
+    </inSequence>
+    <outSequence/>
+    <faultSequence/>
+</target>
+<description/>
+</proxy>
+

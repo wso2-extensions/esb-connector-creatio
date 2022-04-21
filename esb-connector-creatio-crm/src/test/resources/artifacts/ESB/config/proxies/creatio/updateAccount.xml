@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="updateAccount"
+       startOnLoad="true"
+       statistics="disable"
+       trace="disable"
+       transports="http,https">
+    <target>
+        <inSequence>
+            <property name="accountId" expression="get-property('axis2', 'REST_URL_POSTFIX')"/>
+            <log description="config" level="custom">
+                <property expression="$ctx:accountId" name="accountId......."/>
+            </log>
+            <property expression="fn:substring($ctx:accountId, 12,36)" name="id" scope="default" type="STRING"/>
+            <log description="config" level="custom">
+                <property expression="$ctx:id" name="id......."/>
+            </log>
+            <payloadFactory media-type="json">
+                <format> {
+                    "Name": "API Test",
+                    "ProcessListeners": 0,
+                    "Code": "73",
+                    "Phone": "+1 206 480 3801",
+                    "AdditionalPhone": "+1 206 480 4495",
+                    "Fax": "",
+                    "Web": "www.infocom-global.com",
+                    "Address": "48 Pilgrim Street",
+                    "Notes": ""
+                    }
+                </format>
+            </payloadFactory>
+            <property name="ContentType" value="application/json" scope="axis2"/>
+            <property name="messageType" value="application/json" scope="axis2"/>
+            <creatiocrm.init>
+                <creatioHostName>https://118269-crm-bundle.creatio.com</creatioHostName>
+                <creatioPassword>Supervisor</creatioPassword>
+                <creatioUsername>Supervisor</creatioUsername>
+            </creatiocrm.init>
+            <creatiocrm.accountUpdate>
+                <id>{$ctx:id}</id>
+            </creatiocrm.accountUpdate>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </target>
+    <description/>
+</proxy>

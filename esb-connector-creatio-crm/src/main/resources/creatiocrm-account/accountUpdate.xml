@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="accountUpdate" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="id" description="The id of the object will be update"/>
+    <sequence>
+        <property name="callEndpointUri" expression="fn:concat('/0/odata/Account/',$func:id)"/>
+        <property name="httpMethod" value="patch"/>
+        <creatiocrm.callWithRetry/>
+    </sequence>
+</template>

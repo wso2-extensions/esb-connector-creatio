@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="accountCreate" xmlns="http://ws.apache.org/ns/synapse">
+    <sequence>
+        <property name="callEndpointUri" value="/0/odata/Account"/>
+        <property name="httpMethod" value="post"/>
+        <creatiocrm.callWithRetry/>
+    </sequence>
+</template>

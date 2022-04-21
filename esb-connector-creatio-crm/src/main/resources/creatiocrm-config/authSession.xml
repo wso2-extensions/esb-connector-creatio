@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="authSession" xmlns="http://ws.apache.org/ns/synapse">
+    <sequence>
+        <property name="REST_URL_POSTFIX" action="remove" scope="axis2"/>
+        <property name="Accept-Encoding" scope="transport" action="remove"/>
+        <property name="uri.var.timeout" scope="default" type="STRING" value="10000"/>
+        <property expression="fn:concat($ctx:creatioHostName, '/ServiceModel/AuthService.svc/Login')"
+                  name="uri.var.authEndpointUrl" scope="default" type="STRING"/>
+        <log description="header" level="custom">
+            <property expression="$ctx:uri.var.authEndpointUrl" name="uri.var.authEndpointUrl......"/>
+        </log>
+        <script language="js"><![CDATA[var timeout = mc.getProperty("uri.var.timeout");
+                if (timeout == null || timeout == "") {
+                    timeout = 10000;
+                }
+                mc.setProperty("timeout", timeout.toString());]]></script>
+        <property name="DISABLE_CHUNKING" value="true" scope="axis2"/>
+        <filter regex="true" source="boolean($ctx:creatioPassword) and boolean($ctx:creatioPassword)">
+            <then>
+                <property action="remove" name="Accept-Encoding" scope="transport"/>
+                <payloadFactory media-type="json">
+                    <format>
+                        {
+                        "UserName": "$1", "UserPassword":"$2"
+                        }
+                    </format>
+                    <args>
+                        <arg evaluator="xml" expression="$ctx:creatioUsername"/>
+                        <arg evaluator="xml" expression="$ctx:creatioPassword"/>
+                    </args>
+                </payloadFactory>
+                <call>
+                    <endpoint>
+                        <http method="post" uri-template="{uri.var.authEndpointUrl}">
+                            <timeout>
+                                <duration>{$ctx:timeout}</duration>
+                                <responseAction>fault</responseAction>
+                            </timeout>
+                        </http>
+                    </endpoint>
+                </call>
+                <filter source="$axis2:HTTP_SC" regex="200">
+                    <then>
+                        <class description="Set the BPMCSRF value to authCookie" name="com.mitra.creatiocrm.headers.BPMCSRFCookie"/>
+                        <header expression="$ctx:BPMCSRF" name="BPMCSRF" scope="transport"/>
+                        <header expression="$ctx:authCompleteCookie" name="Cookie" scope="transport" type="STRING"/>
+                    </then>
+                    <else>
+                        <log description="header" level="custom">
+                            <property expression="$ctx:BPMCSRF" name="Auth cookie is not found"/>
+                        </log>
+                    </else>
+                </filter>
+            </then>
+            <else/>
+        </filter>
+    </sequence>
+</template>

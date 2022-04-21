@@ -1,0 +1,31 @@
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="getCase"
+       startOnLoad="true"
+       statistics="disable"
+       trace="disable"
+       transports="http,https">
+    <target>
+        <inSequence>
+            <property name="caseId" expression="get-property('axis2', 'REST_URL_POSTFIX')"/>
+            <log description="config" level="custom">
+                <property expression="$ctx:caseId" name="caseId......."/>
+            </log>
+            <property expression="fn:substring($ctx:caseId, 9,36)" name="id" scope="default" type="STRING"/>
+            <log description="config" level="custom">
+                <property expression="$ctx:id" name="id......."/>
+            </log>
+            <creatiocrm.init>
+                <creatioHostName>https://118269-crm-bundle.creatio.com</creatioHostName>
+                <creatioPassword>Supervisor</creatioPassword>
+                <creatioUsername>Supervisor</creatioUsername>
+            </creatiocrm.init>
+            <creatiocrm.caseGet>
+                <id>{$ctx:id}</id>
+            </creatiocrm.caseGet>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </target>
+    <description/>
+</proxy>
