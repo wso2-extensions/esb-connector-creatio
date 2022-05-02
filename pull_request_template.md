@@ -1,54 +1,52 @@
 ## Purpose
-> Creatio has REST API layer to process various kind of objects of the Creatio with Cookies based authentication. When the integrtaion implement with WSO2 EI, it needs to implement Authentication from the scratch, therefore readymade solution will overcome this issue. 
+> Describe the problems, issues, or needs driving this feature/fix and include links to related issues in the following format: Resolves issue1, issue2, etc.
 
 ## Goals
-> Develop EI connector for the Creatio REST API, authentication and few other API calls initially.
+> Describe the solutions that this feature/fix will introduce to resolve the problems described above
 
 ## Approach
-> Read for more information
-https://docs.google.com/document/d/1HtLDI9lEbLkhwZDUTIdq_uLynxfrbxRF/edit?usp=sharing&ouid=101293557905494548387&rtpof=true&sd=true
+> Describe how you are implementing the solutions. Include an animated GIF or screenshot if the change affects the UI (email documentation@wso2.com to review all UI text). Include a link to a Markdown file or Google doc if the feature write-up is too long to paste here.
 
 ## User stories
-> 
+> Summary of user stories addressed by this change>
 
 ## Release note
-> Version 1.0.0 covers authentication,and Contcat, Account and Case management CRUD operations
+> Brief description of the new feature or bug fix as it will appear in the release notes
 
 ## Documentation
-> This will produce new decumentaion secition, https://docs.google.com/document/d/1HtLDI9lEbLkhwZDUTIdq_uLynxfrbxRF/edit?usp=sharing&ouid=101293557905494548387&rtpof=true&sd=true
+> Link(s) to product documentation that addresses the changes of this PR. If no doc impact, enter “N/A” plus brief explanation of why there’s no doc impact
 
 ## Training
-> N/A
+> Link to the PR for changes to the training content in https://github.com/wso2/WSO2-Training, if applicable
 
 ## Certification
-> N/A
+> Type “Sent” when you have provided new/updated certification questions, plus four answers for each question (correct answer highlighted in bold), based on this change. Certification questions/answers should be sent to certification@wso2.com and NOT pasted in this PR. If there is no impact on certification exams, type “N/A” and explain why.
 
 ## Marketing
-> N/A
+> Link to drafts of marketing content that will describe and promote this feature, including product page changes, technical articles, blog posts, videos, etc., if applicable
 
 ## Automation tests
-
+ - Unit tests 
+   > Code coverage information
  - Integration tests
-   > Refer the https://github.com/anusharp/esb-connector-creatio/esb-connector-creatio-crm/src/test/INTEGRATION-TEST.md
+   > Details about the test cases and coverage
 
 ## Security checks
- - Followed secure coding standards in http://wso2.com/technical-reports/wso2-secure-engineering-guidelines? yes
- - Ran FindSecurityBugs plugin and verified report? no
- - Confirmed that this PR doesn't commit any keys, passwords, tokens, usernames, or other secrets? yes
+ - Followed secure coding standards in http://wso2.com/technical-reports/wso2-secure-engineering-guidelines? yes/no
+ - Ran FindSecurityBugs plugin and verified report? yes/no
+ - Confirmed that this PR doesn't commit any keys, passwords, tokens, usernames, or other secrets? yes/no
 
 ## Samples
 > Provide high-level details about the samples related to this feature
 
 ## Related PRs
-> N/A
+> List any other related PRs
 
 ## Migrations (if applicable)
-> N/A
+> Describe migration steps and platforms on which migration has been tested
 
 ## Test environment
-> List all JDK versions, 8 and 11
-operating system :Linux
-
+> List all JDK versions, operating systems, databases, and browser/versions on which this feature/fix was tested
  
 ## Learning
-> N/A
+> Describe the research phase and any blog posts, patterns, libraries, or add-ons you used to solve the problem.
