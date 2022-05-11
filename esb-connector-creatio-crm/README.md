@@ -18,13 +18,13 @@ Case CRUD operation
 
 Follow the steps given below to build the Creatio REST connector from the source code:
 
-1. Get a clone or download the source from [Github](https://github.com/anusharp/CreatioConnector).
+1. Get a clone or download the source from [Github](https://github.com/wso2-extensions/esb-connector-creatio).
 2. Run the following Maven command from the `esb-connector-creatiocrm` directory: `mvn clean install`.
 3. The Creatio connector zip file is created in the `esb-connector-creatiocrm/target` directory
 
 Follow the steps given below to build the Class mediation which is dependency library:
 
-1. Get a clone or download the source from [Github](https://github.com/anusharp/CreatioConnector).
+1. Get a clone or download the source from [Github](https://github.com/wso2-extensions/esb-connector-creatio).
 2. Run the following Maven command from the `CookieMediator` directory: `mvn clean install`.
 3. Copy the CookieMediator-1.0.0-SNAPSHOT.jar into <EI-HOME>/micro-integrator/dropins directory
 

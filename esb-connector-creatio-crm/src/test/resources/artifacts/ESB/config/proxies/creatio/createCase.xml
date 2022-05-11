@@ -27,9 +27,10 @@
         <inSequence>
             <property name="httpMethod" value="post"/>
             <creatiocrm.init>
-                <creatioHostName>https://creatio-host-name.com</creatioHostName>
-                <creatioPassword>adminpassword</creatioPassword>
-                <creatioUsername>adminusername</creatioUsername>
+                <hostName>https://hostname.creatio.com</hostName>
+                <password>password</password>
+                <username>username</username>
+                <timeout>2000</timeout>
             </creatiocrm.init>
             <creatiocrm.caseCreate/>
             <respond/>

@@ -34,9 +34,10 @@
                 <property expression="$ctx:id" name="id......."/>
             </log>
             <creatiocrm.init>
-                <creatioHostName>https://creatio-host-name.com</creatioHostName>
-                <creatioPassword>adminpassword</creatioPassword>
-                <creatioUsername>adminusername</creatioUsername>
+                <hostName>https://hostname.creatio.com</hostName>
+                <password>password</password>
+                <username>username</username>
+                <timeout>2000</timeout>
             </creatiocrm.init>
             <creatiocrm.caseDelete>
                 <id>{$ctx:id}</id>

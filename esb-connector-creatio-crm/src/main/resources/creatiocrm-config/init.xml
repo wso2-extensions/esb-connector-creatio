@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template name="init" xmlns="http://ws.apache.org/ns/synapse">
-<parameter name="creatioHostName" description="The hostname of the Creatio server"/>
-<parameter name="creatioPassword" description="The password of the Creatio account"/>
-<parameter name="creatioUsername" description="The username of the Creatio account"/>
+<parameter name="hostName" description="The hostname of the Creatio server"/>
+<parameter name="password" description="The password of the Creatio account"/>
+<parameter name="username" description="The username of the Creatio account"/>
+<parameter name="timeout" description="Timeout of the endpoint"/>
 <sequence>
-    <property name="creatioHostName" expression="$func:creatioHostName"/>
-    <property name="creatioPassword" expression="$func:creatioPassword"/>
-    <property name="creatioUsername" expression="$func:creatioUsername"/>
+    <property name="creatioHostName" expression="$func:hostName"/>
+    <property name="creatioPassword" expression="$func:password"/>
+    <property name="creatioUsername" expression="$func:username"/>
+    <property name="timeout" expression="$func:timeout"/>
 </sequence>
 </template>

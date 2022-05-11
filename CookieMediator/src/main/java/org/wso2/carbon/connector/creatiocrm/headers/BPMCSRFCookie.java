@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package com.mitra.creatiocrm.headers;
+package org.wso2.carbon.connector.creatiocrm.headers;
 
 import java.util.HashMap;
 import java.util.List;
@@ -48,33 +48,32 @@ public class BPMCSRFCookie extends AbstractMediator {
         Object headers = ((Axis2MessageContext) context)
                 .getAxis2MessageContext().getProperty(org.apache.axis2.context.MessageContext.TRANSPORT_HEADERS);
         Map<String, String> headerMap = (Map) headers;
-        if (headerMap.containsKey(COOKIE_NAME_CAMELCASE)) {
-            String val = headerMap.get(COOKIE_NAME_CAMELCASE);
-            headerMap.remove(COOKIE_NAME_CAMELCASE);
-            headerMap.put(COOKIE_NAME, val);
-        }
-        if (headerMap.containsKey(COOKIE_NAME)) {
-            String cookies = headerMap.get(COOKIE_NAME);
-            String authCookiesVal = cookies.split(";")[0];
-            if (cookies.contains(COOKIE_BPMCSRF)) {
+
+        if (headerMap.containsKey(COOKIE_NAME_CAMELCASE) || headerMap.containsKey(COOKIE_NAME)) {
+            String cookie = headerMap.get(COOKIE_NAME_CAMELCASE);
+            if(cookie.isEmpty()){
+                cookie = headerMap.get(COOKIE_NAME);
+            }
+            String authCookiesVal = cookie.split(";")[0];
+            if (cookie.contains(COOKIE_BPMCSRF)) {
                 context.setProperty(BPMCSRF, authCookiesVal.split(":")[1]);
             }
-            cookiesMap.put(authCookiesVal.split("=")[0], cookies.split(";")[0]);
-            headerMap.remove(COOKIE_NAME);
+            cookiesMap.put(authCookiesVal.split("=")[0], cookie.split(";")[0]);
         }
+
         Map<String, List<String>> excessHeadersMap = (Map) ((Axis2MessageContext) context).getAxis2MessageContext().getProperty("EXCESS_TRANSPORT_HEADERS");
-        if (excessHeadersMap.containsKey(COOKIE_NAME_CAMELCASE)) {
-            List<String> val = excessHeadersMap.get(COOKIE_NAME_CAMELCASE);
-            excessHeadersMap.remove(COOKIE_NAME_CAMELCASE);
-            excessHeadersMap.put(COOKIE_NAME, val);
-        }
-        if (excessHeadersMap.containsKey(COOKIE_NAME)) {
-            List<String> cookies = excessHeadersMap.get(COOKIE_NAME);
-            for (String cookie : cookies) {
-                String authCookiesVal = cookie.split(";")[0];
-                cookiesMap.put(authCookiesVal.split("=")[0], cookie.split(";")[0]);
-                if (cookie.contains(COOKIE_BPMCSRF)) {
-                    context.setProperty(BPMCSRF, authCookiesVal.split("=")[1]);
+        if (excessHeadersMap.containsKey(COOKIE_NAME_CAMELCASE) || excessHeadersMap.containsKey(COOKIE_NAME)) {
+            List<String> cookies = excessHeadersMap.get(COOKIE_NAME_CAMELCASE);
+            if (cookies == null) {
+                cookies = excessHeadersMap.get(COOKIE_NAME);
+            }
+            if (cookies != null) {
+                for(String cookie : cookies) {
+                    String authCookiesVal = cookie.split(";")[0];
+                    cookiesMap.put(authCookiesVal.split("=")[0], cookie.split(";")[0]);
+                    if (cookie.contains(COOKIE_BPMCSRF)) {
+                        context.setProperty(BPMCSRF, authCookiesVal.split("=")[1]);
+                    }
                 }
             }
         }

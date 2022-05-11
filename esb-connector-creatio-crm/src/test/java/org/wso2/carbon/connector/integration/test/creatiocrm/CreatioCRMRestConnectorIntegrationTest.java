@@ -16,9 +16,9 @@ import java.util.List;
 import java.util.Map;
 
 public class CreatioCRMRestConnectorIntegrationTest extends ConnectorIntegrationTestBase {
-    private Map<String, String> eiRequestHeadersMap = new HashMap<String, String>();
+    private final Map<String, String> eiRequestHeadersMap = new HashMap<String, String>();
 
-    private Map<String, String> apiRequestHeadersMap = new HashMap<String, String>();
+    private final Map<String, String> apiRequestHeadersMap = new HashMap<String, String>();
 
     private String apiUrlEndPoint;
 
@@ -43,7 +43,6 @@ public class CreatioCRMRestConnectorIntegrationTest extends ConnectorIntegration
                 "POST", eiRequestHeadersMap, null);
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertTrue(esbRestResponse.getHeadersMap().containsKey("BPMCSRF"));
-        Assert.assertTrue(esbRestResponse.getHeadersMap().containsKey("set-cookie"));
         Assert.assertTrue(esbRestResponse.getHeadersMap().containsKey("Cookie"));
     }
 
@@ -55,10 +54,6 @@ public class CreatioCRMRestConnectorIntegrationTest extends ConnectorIntegration
         RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(getProxyServiceURLHttp(methodName),
                 "POST", eiRequestHeadersMap, null);
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
-        Map<String, List<String>> list = esbRestResponse.getHeadersMap();
-        eiRequestHeadersMap.get(esbRestResponse.getHeadersMap().get("BPMCSRF"));
-        eiRequestHeadersMap.get(esbRestResponse.getHeadersMap().get("set-cookie"));
-        eiRequestHeadersMap.get(esbRestResponse.getHeadersMap().get("Cookie"));
 
         methodName = "postContact";
         esbRestResponse = sendJsonRestRequest(getProxyServiceURLHttp(methodName),
@@ -140,53 +135,53 @@ public class CreatioCRMRestConnectorIntegrationTest extends ConnectorIntegration
         String cId = esbRestResponse.getBody().getString("Id");
 
         methodName = "getCase";
-        String endpoint = getProxyServiceURLHttp(methodName) + "?caseId=" +cId;
+        String endpoint = getProxyServiceURLHttp(methodName) + "?caseId=" + cId;
         esbRestResponse = sendJsonRestRequest(endpoint, "GET",
                 apiRequestHeadersMap);
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
 
         methodName = "updateCase";
-        endpoint = getProxyServiceURLHttp(methodName) + "?caseId=" +cId;
+        endpoint = getProxyServiceURLHttp(methodName) + "?caseId=" + cId;
         esbRestResponse = sendJsonRestRequest(endpoint, "PUT",
                 apiRequestHeadersMap, "esb_caseUpdate_optional.json");
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 204);
 
         methodName = "deleteCase";
-        endpoint = getProxyServiceURLHttp(methodName) + "?caseId=" +cId;
+        endpoint = getProxyServiceURLHttp(methodName) + "?caseId=" + cId;
         esbRestResponse = sendJsonRestRequest(endpoint, "DELETE",
                 apiRequestHeadersMap);
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 204);
     }
 
-     @Test(groups = {"wso2.ei"}, description = "Creatio Case integration test for CRUD API call without Auth data")
-     public void caseTestWithoutAuth() throws Exception {
+    @Test(groups = {"wso2.ei"}, description = "Creatio Case integration test for CRUD API call without Auth data")
+    public void caseTestWithoutAuth() throws Exception {
 
-     String methodName = "postCase";
+        String methodName = "postCase";
 
-     RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(getProxyServiceURLHttp(methodName),
-     "POST", eiRequestHeadersMap, "esb_casePost_optional.json");
-     Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 201);
+        RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(getProxyServiceURLHttp(methodName),
+                "POST", eiRequestHeadersMap, "esb_casePost_optional.json");
+        Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 201);
 
-     String cId = esbRestResponse.getBody().getString("Id");
+        String cId = esbRestResponse.getBody().getString("Id");
 
-     methodName = "getCase";
-     String endpoint = getProxyServiceURLHttp(methodName) + "?caseId=" +cId;
-     esbRestResponse = sendJsonRestRequest(endpoint, "GET",
-     apiRequestHeadersMap);
-     Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
+        methodName = "getCase";
+        String endpoint = getProxyServiceURLHttp(methodName) + "?caseId=" + cId;
+        esbRestResponse = sendJsonRestRequest(endpoint, "GET",
+                apiRequestHeadersMap);
+        Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
 
-     methodName = "updateCase";
-     endpoint = getProxyServiceURLHttp(methodName) + "?caseId=" +cId;
-     esbRestResponse = sendJsonRestRequest(endpoint, "PUT",
-             apiRequestHeadersMap, "esb_caseUpdate_optional.json");
-     Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 204);
+        methodName = "updateCase";
+        endpoint = getProxyServiceURLHttp(methodName) + "?caseId=" + cId;
+        esbRestResponse = sendJsonRestRequest(endpoint, "PUT",
+                apiRequestHeadersMap, "esb_caseUpdate_optional.json");
+        Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 204);
 
-     methodName = "deleteCase";
-     endpoint = getProxyServiceURLHttp(methodName) + "?caseId=" +cId;
-     esbRestResponse = sendJsonRestRequest(endpoint, "DELETE",
-     apiRequestHeadersMap);
-     Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 204);
-     }
+        methodName = "deleteCase";
+        endpoint = getProxyServiceURLHttp(methodName) + "?caseId=" + cId;
+        esbRestResponse = sendJsonRestRequest(endpoint, "DELETE",
+                apiRequestHeadersMap);
+        Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 204);
+    }
 
 
     @Test(groups = {"wso2.ei"}, description = "Creatio Account integration test for CRUD API call with Auth data")

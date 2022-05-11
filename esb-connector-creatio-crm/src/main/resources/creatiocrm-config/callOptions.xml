@@ -8,10 +8,6 @@
                 <target type="body"/>
             </enrich>
         </filter>
-        <log description="header" level="custom">
-            <property expression="$ctx:uri.var.callCreatioEndpointUri" name="caller Endpoint Uri....."/>
-            <property expression="$ctx:httpMethod" name="Method Type....."/>
-        </log>
         <creatiocrm.creatioCRMRequestHeader/>
         <property name="REST_URL_POSTFIX" action="remove" scope="axis2"/>
         <filter source="$ctx:httpMethod" regex="get">
@@ -82,7 +78,7 @@
             </call>
         </filter>
         <log description="header" level="custom">
-             <property expression="$axis2:HTTP_SC" name="HTTP Status....."/>
+             <property expression="$axis2:HTTP_SC" name="HTTP Status - "/>
         </log>
     </sequence>
 </template>
