@@ -1,6 +1,6 @@
 # Creatio REST EI Connector
 
-The Creatio REST Connector allows you to work with below CRM functinalities
+The Creatio REST Connector allows you to work with below CRM functionalities.
 
 Contact CRUD operation
 Account CRUD operation
