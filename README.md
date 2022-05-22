@@ -43,7 +43,7 @@ keytool -importcert -file <certificate_file> -keystore <EI>/repository/resources
 
 4. Execute the below command to encrypt the above config values ./ciphertool.sh -Dconfigure, provide the password of wso2carbon.jks, default value is 'wso2carbon' if encrypted values need to be configured.
 
-5. Start the WSO2 EI instanace like this. (you need to provide the passowrd of wso2carbon.jks at the execution, default value is 'wso2carbon' if values are encrypted )
+5. Start the WSO2 EI instance like this. (you need to provide the password of wso2carbon.jks at the execution, default value is 'wso2carbon' if values are encrypted )
 
 	./micro-integrator.sh
 6. Send the sample request to created mediation using CreatioCRM connector.
