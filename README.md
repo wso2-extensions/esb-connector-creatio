@@ -41,7 +41,7 @@ keytool -importcert -file <certificate_file> -keystore <EI>/repository/resources
 
 3. Deploy the car app to <EI-HOME>/micro-integrator/repository/deployment/server/carbonapps folder in WSO2 EI
 
-4. Execute the below command encrypt the above config values ./ciphertool.sh -Dconfigure, provide the passowrd of wso2carbon.jks, default value is 'wso2carbon' if encrypted values need to be configured.
+4. Execute the below command to encrypt the above config values ./ciphertool.sh -Dconfigure, provide the password of wso2carbon.jks, default value is 'wso2carbon' if encrypted values need to be configured.
 
 5. Start the WSO2 EI instanace like this. (you need to provide the passowrd of wso2carbon.jks at the execution, default value is 'wso2carbon' if values are encrypted )
 
