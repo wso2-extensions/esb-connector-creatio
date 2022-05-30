@@ -28,6 +28,11 @@ import org.apache.synapse.core.axis2.Axis2MessageContext;
 import org.apache.synapse.mediators.AbstractMediator;
 import org.apache.synapse.MessageContext;
 
+/**
+ * Class BPMCSRFCookie which to derive the HTTP headers from the Creatio Authentication response
+ * Multiple Set-cookie HTTP headers contains Authentication information for rest of the API calls and process those and assign
+ * to relevant context value in order to use in the Creatio connector implementation
+ */
 public class BPMCSRFCookie extends AbstractMediator {
 
     private static final Log log = LogFactory.getLog(BPMCSRFCookie.class);
@@ -41,6 +46,11 @@ public class BPMCSRFCookie extends AbstractMediator {
     private static String ASPXAUTH = ".ASPXAUTH";
     private static String BPMCSRF = "BPMCSRF";
 
+    /**
+     * Set the authentication cookie values to context reading from the HTTP Headers
+     * @param context - messageContext
+     * @return boolean - true or false
+     */
     public boolean mediate(MessageContext context) {
 
         String allCookies = "";
@@ -77,15 +87,34 @@ public class BPMCSRFCookie extends AbstractMediator {
                 }
             }
         }
+        allCookies = loadAllCookies(cookiesMap, allCookies);
+        context.setProperty(AUTH_COMPLETE_PROPERTY, allCookies);
+        return true;
+    }
+
+    /**
+     * Get the total cookie values for Authentication
+     * @param cookiesMap
+     * @param allCookies
+     * @return String value with the all cookie information
+     */
+    private String  loadAllCookies(Map<String, String> cookiesMap, String allCookies) {
+
         allCookies = getCookieVal(cookiesMap, BPMSESSIONID, allCookies);
         allCookies = getCookieVal(cookiesMap, USERNAME, allCookies);
         allCookies = getCookieVal(cookiesMap, BPMLOADER, allCookies);
         allCookies = getCookieVal(cookiesMap, ASPXAUTH, allCookies);
         allCookies = getCookieVal(cookiesMap, BPMCSRF, allCookies);
-        context.setProperty(AUTH_COMPLETE_PROPERTY, allCookies);
-        return true;
+        return allCookies;
     }
 
+    /**
+     * Extract individual cookie values
+     * @param cookieMap
+     * @param cookieName
+     * @param totalCookies
+     * @return total cookies
+     */
     private String getCookieVal(Map<String, String> cookieMap, String cookieName, String totalCookies) {
         if (cookieMap.containsKey(cookieName)) {
             if (totalCookies.isEmpty()) {

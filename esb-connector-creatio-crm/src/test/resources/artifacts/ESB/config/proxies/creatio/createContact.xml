@@ -23,20 +23,21 @@
        statistics="disable"
        trace="disable"
        transports="http,https">
-<target>
-    <inSequence>
-        <property name="httpMethod" value="post"/>
-        <creatiocrm.init>
-            <hostName>https://hostname.creatio.com</hostName>
-            <password>password</password>
-            <username>username</username>
-            <timeout>2000</timeout>
-        </creatiocrm.init>
-        <creatiocrm.contactCreate/>
-        <respond/>
-    </inSequence>
-    <outSequence/>
-    <faultSequence/>
-</target>
-<description/>
+    <target>
+        <inSequence>
+            <property name="httpMethod" value="post"/>
+            <creatiocrm.init>
+                <hostName>https://hostname.creatio.com</hostName>
+                <password>password</password>
+                <username>username</username>
+                <timeout>2000</timeout>
+            </creatiocrm.init>
+            <creatiocrm.contactCreate/>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </target>
+    <description/>
 </proxy>
+

@@ -23,29 +23,30 @@
        statistics="disable"
        trace="disable"
        transports="http,https">
-<target>
-    <inSequence>
-        <property name="contactId" expression="get-property('axis2', 'REST_URL_POSTFIX')"/>
-        <log description="config" level="custom">
-            <property expression="$ctx:contactId" name="contactId......."/>
-        </log>
-        <property expression="fn:substring($ctx:contactId, 12,36)" name="id" scope="default" type="STRING"/>
-        <log description="config" level="custom">
-            <property expression="$ctx:id" name="id......."/>
-        </log>
-        <creatiocrm.init>
-            <hostName>https://hostname.creatio.com</hostName>
-            <password>password</password>
-            <username>username</username>
-            <timeout>2000</timeout>
-        </creatiocrm.init>
-        <creatiocrm.contactGet>
-            <id>{$ctx:id}</id>
-        </creatiocrm.contactGet>
-        <respond/>
-    </inSequence>
-    <outSequence/>
-    <faultSequence/>
-</target>
-<description/>
+    <target>
+        <inSequence>
+            <property name="contactId" expression="get-property('axis2', 'REST_URL_POSTFIX')"/>
+            <log description="config" level="custom">
+                <property expression="$ctx:contactId" name="contactId......."/>
+            </log>
+            <property expression="fn:substring($ctx:contactId, 12,36)" name="id" scope="default" type="STRING"/>
+            <log description="config" level="custom">
+                <property expression="$ctx:id" name="id......."/>
+            </log>
+            <creatiocrm.init>
+                <hostName>https://hostname.creatio.com</hostName>
+                <password>password</password>
+                <username>username</username>
+                <timeout>2000</timeout>
+            </creatiocrm.init>
+            <creatiocrm.contactGet>
+                <id>{$ctx:id}</id>
+            </creatiocrm.contactGet>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </target>
+    <description/>
 </proxy>
+

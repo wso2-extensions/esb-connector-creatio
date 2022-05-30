@@ -30,7 +30,7 @@ Follow the steps given below to build the Class mediation which is dependency li
 
 #### Deploy connector with mediator implemented CAR file
 
-1. Add connector creatiocrm-connector-1.1.0.zip to Intergration Studio inorder to work with EI tooling, see [Working with Connectors via Tooling](https://docs.wso2.com/display/EI650/Working+with+Connectors+via+Tooling) and create the mediation
+1. Add connector creatiocrm-connector-1.1.0.zip to Integration Studio inorder to work with EI tooling, see [Working with Connectors via Tooling](https://docs.wso2.com/display/EI650/Working+with+Connectors+via+Tooling) and create the mediation
 
 2. Import the creatio server certificate to the EI client keystore using either the following command or the EI Management Console.
 
@@ -43,6 +43,7 @@ keytool -importcert -file <certificate_file> -keystore <EI>/repository/resources
 4. Start the WSO2 EI instance like this. (you need to provide the password of wso2carbon.jks at the execution, default value is 'wso2carbon' if values are encrypted )
 
   ./micro-integrator.sh
+  
 5. Send the sample request to created mediation using CreatioCRM connector.
 
 ## Headers
@@ -54,38 +55,36 @@ Content-Length :
 
 7. ## Contact Operations
 
-
 7.1. Create Contact
 
 Creatio Contact operation used in EI mediation. The contact payload format display in below
 
 <creatiocrm.contactCreate/>
 
-
-Body Format:
-{
-   "Name": String,
-   "AccountId": String,
-   "JobTitle": String,
-   "BirthDate": String
-   "Phone": String,
-   "MobilePhone": String,
-   "Email": String,
-   "Completeness": Int,
-   "Age":Int
-}
-Sample Request:
-{
-   "Name": "API Test",
-   "AccountId": "e6574af1-3e92-4099-958e-e798f52ee016",
-   "JobTitle": "Marketing manager",
-   "BirthDate": "0001-01-01T00:00:00Z",
-   "Phone": "",
-   "MobilePhone": "+1 213 566 34 22",
-   "Email": "test@gmail",
-   "Completeness": 30,
-   "Age": 19
-}
+    Body Format:
+    {
+       "Name": String,
+       "AccountId": String,
+       "JobTitle": String,
+       "BirthDate": String
+       "Phone": String,
+       "MobilePhone": String,
+       "Email": String,
+       "Completeness": Int,
+       "Age":Int
+    }
+    Sample Request:
+    {
+       "Name": "API Test",
+       "AccountId": "e6574af1-3e92-4099-958e-e798f52ee016",
+       "JobTitle": "Marketing manager",
+       "BirthDate": "0001-01-01T00:00:00Z",
+       "Phone": "",
+       "MobilePhone": "+1 213 566 34 22",
+       "Email": "test@gmail",
+       "Completeness": 30,
+       "Age": 19
+    }
 
 7.2. Get Contact
 
@@ -106,9 +105,7 @@ Ex:
 <id>{$ctx:contactId}</id>
 </creatiocrm.contactDelete>
 
-
 8. ## Account Operations
-
 
 8.1. Account Contact
 
@@ -140,7 +137,6 @@ Sample Request:
    "Notes": ""
 }
 
-
 8.2. Get Account
 
    <creatiocrm.accountGet>
@@ -158,8 +154,6 @@ Sample Request:
 <creatiocrm.accountDelete>
 <id>{$ctx:accountId}</id>
 </creatiocrm.accountDelete>
-
-
 
 9. ## Case Operations
 9.1. Create Case
@@ -208,11 +202,3 @@ Body Example:
 <creatiocrm.caseDelete>
 <id>{$ctx:caseId}</id>
 </creatiocrm.caseDelete>
-
-
-
-
-
-
-
-
