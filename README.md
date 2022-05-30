@@ -1,6 +1,6 @@
 # Creatio REST EI Connector
 
-The Creatio REST Connector allows you to work with below CRM functinalities
+The Creatio REST Connector allows you to work with below CRM functionalities.
 
 Contact CRUD operation
 Account CRUD operation
@@ -41,8 +41,11 @@ Follow the steps given below to build the Class mediation whihc is dependecy lib
 
 3. Deploy the car app to <EI-HOME>/micro-integrator/repository/deployment/server/carbonapps folder in WSO2 EI
 
-4. Start the WSO2 EI instanace like this. (you need to provide the passowrd of wso2carbon.jks at the execution, default value is 'wso2carbon' if values are encrypted )
+4. Start the WSO2 EI instance like this.
+
+```
 	./micro-integrator.sh
+```
 
 5. Send the sample request to created mediation using CreatioCRM connector.
 
