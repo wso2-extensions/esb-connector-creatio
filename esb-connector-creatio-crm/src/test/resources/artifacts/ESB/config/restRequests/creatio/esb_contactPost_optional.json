@@ -1,0 +1,11 @@
+{
+  "Name": "API Test",
+  "AccountId": "e6574af1-3e92-4099-958e-e798f52ee016",
+  "JobTitle": "Marketing manager",
+  "BirthDate": "0001-01-01T00:00:00Z",
+  "Phone": "",
+  "MobilePhone": "+1 213 566 34 22",
+  "Email": "test@gmail",
+  "Completeness": 30,
+  "Age": 19
+}
