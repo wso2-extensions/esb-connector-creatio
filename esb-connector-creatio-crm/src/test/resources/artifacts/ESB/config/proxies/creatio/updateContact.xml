@@ -26,13 +26,7 @@
     <target>
         <inSequence>
             <property name="contactId" expression="get-property('axis2', 'REST_URL_POSTFIX')"/>
-            <log description="config" level="full">
-                <property expression="$ctx:contactId" name="contactId.update......"/>
-            </log>
             <property expression="fn:substring($ctx:contactId, 12,36)" name="id" scope="default" type="STRING"/>
-            <log description="config" level="custom">
-                <property expression="$ctx:id" name="id......."/>
-            </log>
             <payloadFactory media-type="json">
                 <format>{
                     "Name": "API Test Updating",

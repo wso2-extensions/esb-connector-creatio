@@ -23,9 +23,6 @@
         <property name="Accept-Encoding" scope="transport" action="remove"/>
         <property expression="fn:concat($ctx:creatioHostName, '/ServiceModel/AuthService.svc/Login')"
                   name="uri.var.authEndpointUrl" scope="default" type="STRING"/>
-        <log description="header" level="custom">
-            <property expression="$ctx:uri.var.authEndpointUrl" name="AuthEndpoint - "/>
-        </log>
         <script language="js"><![CDATA[var timeout = mc.getProperty("timeout");
                 if (timeout == null || timeout == "") {
                     timeout = 10000;
