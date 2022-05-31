@@ -20,7 +20,18 @@
             </modules>
         </profile>
     </profiles>
-
+    <properties>
+        <synapse.version>2.1.7-wso2v95</synapse.version>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.synapse</groupId>
+                <artifactId>synapse-core</artifactId>
+                <version>${synapse.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <build>
         <plugins>
             <plugin>
@@ -58,6 +69,4 @@
             </plugin>
         </plugins>
     </build>
-    <properties>
-    </properties>
 </project>

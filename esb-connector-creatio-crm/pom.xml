@@ -34,7 +34,6 @@
         <automation.framework.utils.version>4.4.2</automation.framework.utils.version>
         <automation.framework.version>4.4.3</automation.framework.version>
         <emma.version>2.1.5320</emma.version>
-        <synapse.version>2.1.7-wso2v95</synapse.version>
         <carbon.mediation.version>4.7.53</carbon.mediation.version>
         <json.version>3.0.0.wso2v1</json.version>
         <org.testng.version>6.1.1</org.testng.version>
@@ -50,7 +49,6 @@
         <dependency>
             <groupId>org.apache.synapse</groupId>
             <artifactId>synapse-core</artifactId>
-            <version>${synapse.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.synapse</groupId>
@@ -193,11 +191,11 @@
         </dependency>
     </dependencies>
 <!--    <scm>-->
-<!--        <connection>scm:git:https://github.com/wso2-extensions/esb-connector-creatiocrm.git-->
+<!--        <connection>scm:git:https://github.com/wso2-extensions/esb-connector-creatio.git-->
 <!--        </connection>-->
-<!--        <url>https://github.com/wso2-extensions/esb-connector-creatiocrm.git</url>-->
+<!--        <url>https://github.com/wso2-extensions/esb-connector-creatio.git</url>-->
 <!--        <developerConnection>-->
-<!--            scm:git:https://github.com/wso2-extensions/esb-connector-creatiocrm-->
+<!--            scm:git:https://github.com/wso2-extensions/esb-connector-creatio-->
 <!--        </developerConnection>-->
 <!--        <tag>HEAD</tag>-->
 <!--    </scm>-->
