@@ -33,7 +33,7 @@
         </component>
         <component name="contactUpdate">
             <file>contactUpdate.xml</file>
-            <description>Update the contact </description>
+            <description>Update the contact</description>
         </component>
     </subComponents>
 </component>

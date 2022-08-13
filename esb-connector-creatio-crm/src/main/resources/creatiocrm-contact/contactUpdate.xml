@@ -18,10 +18,10 @@
   ~
   -->
 <template name="contactUpdate" xmlns="http://ws.apache.org/ns/synapse">
-<parameter name="id" description="The Id of the object will be update"/>
-<sequence>
-    <property name="callEndpointUri" expression="fn:concat('/0/odata/Contact/',$func:id)"/>
-    <property name="httpMethod" value="patch"/>
-    <creatiocrm.callWithRetry/>
-</sequence>
+    <parameter name="id" description="The Id of the object will be update"/>
+    <sequence>
+        <property name="callEndpointUri" expression="fn:concat('/0/odata/Contact/',$func:id)"/>
+        <property name="httpMethod" value="patch"/>
+        <creatiocrm.callWithRetry/>
+    </sequence>
 </template>

@@ -25,14 +25,15 @@
                 <target property="ORIGINAL_MSG_PAYLOAD" type="property"/>
             </enrich>
         </filter>
-        <filter  xpath="boolean($trp:BPMCSRF)">
+        <filter xpath="boolean($trp:BPMCSRF)">
             <then>
             </then>
             <else>
                 <creatiocrm.authSession/>
             </else>
         </filter>
-        <property name="uri.var.callCreatioEndpointUri" expression="fn:concat($ctx:creatioHostName, $ctx:callEndpointUri)"/>
+        <property name="uri.var.callCreatioEndpointUri"
+                  expression="fn:concat($ctx:creatioHostName, $ctx:callEndpointUri)"/>
         <creatiocrm.callOptions/>
         <log description="header" level="custom">
             <property expression="$axis2:HTTP_SC" name="HttpStatus"/>

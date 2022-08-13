@@ -67,7 +67,7 @@
                     </http>
                 </endpoint>
             </call>
-       </filter>
+        </filter>
         <!--for HTTP method PUT-->
         <filter source="$ctx:httpMethod" regex="put">
             <call>
@@ -96,7 +96,7 @@
             </call>
         </filter>
         <log description="header" level="custom">
-             <property expression="$axis2:HTTP_SC" name="HTTP Status - "/>
+            <property expression="$axis2:HTTP_SC" name="HTTP Status - "/>
         </log>
     </sequence>
 </template>

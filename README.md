@@ -36,7 +36,6 @@ Follow the steps given below to build the Class mediation whihc is dependecy lib
 
 ```
     keytool -importcert -file <certificate_file> -keystore <EI>/repository/resources/security/client-truststore.jks -alias "creatio"
-
 ```
 
 3. Deploy the car app to <EI-HOME>/micro-integrator/repository/deployment/server/carbonapps folder in WSO2 EI
@@ -64,7 +63,6 @@ Creatio Contact create operation used in EI mediation. It will be used payload t
 
 ```
     <creatiocrm.contactCreate/>
-
 ```
 
 2. Get Contact
@@ -82,7 +80,6 @@ Ex:
     <creatiocrm.contactUpdate>
         <id>{$ctx:uri.var.id}</id>
     </creatiocrm.contactUpdate>
-
 ```
 
 4. Delete Contact
@@ -91,12 +88,12 @@ Ex:
     <creatiocrm.contactDelete>
         <id>{$ctx:uri.var.id}</id>
     </creatiocrm.contactDelete>
-
 ```
 
 ## Case Operations
 
     Body Format:
+```
     {
         "Number": String,
         "RegisteredOn": Datetime,
@@ -107,7 +104,9 @@ Ex:
         "ContactId": String,
         "SolutionRemains": Double
     }
+```
     Body Example:
+```
     {
         "Number": "SR00000045",
         "RegisteredOn": "2021-07-16T11:00:00Z",
@@ -118,12 +117,11 @@ Ex:
         "ContactId": "00b34750-2feb-4545-b233-153502326f3c",
         "SolutionRemains": 0.0
     }
-
+```
 
 1. Create case
 ```
    <creatiocrm.caseCreate/>
-
 ```
 
 2. Get case
@@ -132,16 +130,13 @@ Ex:
     <creatiocrm.caseGet>
         <id>{$ctx:uri.var.id}</id>
     </creatiocrm.caseGet>
-
 ```
-
 3. Patch case
 
 ```
     <creatiocrm.caseUpdate>
         <id>{$ctx:uri.var.id}</id>
     </creatiocrm.caseUpdate>
-
 ```
 
 4. Delete case
@@ -150,13 +145,12 @@ Ex:
     <creatiocrm.caseDelete>
         <id>{$ctx:uri.var.id}</id>
     </creatiocrm.caseDelete>
-
 ```
-
-
 ## Account Operations
 
+
     Body Format:
+```
     {
         "Name": String,
         "ProcessListeners": integer,
@@ -168,7 +162,9 @@ Ex:
         "Address": String,
         "Notes":String
     }
+```
     Sample Request:
+```
     {
         "Name": "API Test",
         "ProcessListeners": 0,
@@ -180,12 +176,12 @@ Ex:
         "Address": "48 Pilgrim Street",
         "Notes": ""
     }
+```
 
 1. Account Contact
 
 ```
    <creatiocrm.accountCreate/>
-
 ```
 
 2. Get Account
@@ -194,23 +190,20 @@ Ex:
     <creatiocrm.accountGet>
         <id>{$ctx:uri.var.id}</id>
     </creatiocrm.accountGet>
-
 ```
     
 3. Patch Account
 
 ```
     <creatiocrm.accountUpdate>
-    <id>{$ctx:uri.var.id}</id>
+        <id>{$ctx:uri.var.id}</id>
     </creatiocrm.accountUpdate>
-
 ```
 
 4. Delete Account
 
 ```
     <creatiocrm.accountDelete>
-    <id>{$ctx:uri.var.id}</id>
+        <id>{$ctx:uri.var.id}</id>
     </creatiocrm.accountDelete>
-
 ```

@@ -33,11 +33,11 @@
         </component>
         <component name="creatioCRMRequestHeader">
             <file>creatioCRMRequestHeader.xml</file>
-            <description>Creatio CRM APIs headers </description>
+            <description>Creatio CRM APIs headers</description>
         </component>
         <component name="authSession">
             <file>authSession.xml</file>
-            <description>Creatio CRM APIs headers </description>
+            <description>Creatio CRM APIs headers</description>
         </component>
     </subComponents>
 </component>

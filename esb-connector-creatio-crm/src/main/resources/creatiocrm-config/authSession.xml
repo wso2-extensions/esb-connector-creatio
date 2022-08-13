@@ -55,7 +55,8 @@
                 </call>
                 <filter source="$axis2:HTTP_SC" regex="200">
                     <then>
-                        <class description="Set the BPMCSRF value to authCookie" name="org.wso2.carbon.connector.creatiocrm.headers.BPMCSRFCookie"/>
+                        <class description="Set the BPMCSRF value to authCookie"
+                               name="org.wso2.carbon.connector.creatiocrm.headers.BPMCSRFCookie"/>
                         <header expression="$ctx:BPMCSRF" name="BPMCSRF" scope="transport"/>
                         <header expression="$ctx:authCompleteCookie" name="Cookie" scope="transport" type="STRING"/>
                         <property name="Set-Cookie" scope="transport" action="remove"/>

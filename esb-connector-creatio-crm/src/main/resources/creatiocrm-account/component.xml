@@ -33,7 +33,7 @@
         </component>
         <component name="accountUpdate">
             <file>accountUpdate.xml</file>
-            <description>Update the account </description>
+            <description>Update the account</description>
         </component>
     </subComponents>
 </component>

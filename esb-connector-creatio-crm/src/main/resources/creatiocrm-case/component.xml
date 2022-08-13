@@ -33,7 +33,7 @@
         </component>
         <component name="caseUpdate">
             <file>caseUpdate.xml</file>
-            <description>Update the Case </description>
+            <description>Update the Case</description>
         </component>
     </subComponents>
 </component>

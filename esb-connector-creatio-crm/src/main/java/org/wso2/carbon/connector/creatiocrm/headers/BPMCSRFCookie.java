@@ -1,5 +1,3 @@
-
-
 /*
  * Copyright (c) 2022, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
@@ -18,15 +16,15 @@
 
 package org.wso2.carbon.connector.creatiocrm.headers;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.synapse.MessageContext;
+import org.apache.synapse.core.axis2.Axis2MessageContext;
+import org.apache.synapse.mediators.AbstractMediator;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.synapse.core.axis2.Axis2MessageContext;
-import org.apache.synapse.mediators.AbstractMediator;
-import org.apache.synapse.MessageContext;
 
 /**
  * Class BPMCSRFCookie which to derive the HTTP headers from the Creatio Authentication response
@@ -35,19 +33,19 @@ import org.apache.synapse.MessageContext;
  */
 public class BPMCSRFCookie extends AbstractMediator {
 
-    private static final Log log = LogFactory.getLog(BPMCSRFCookie.class);
-    private static String COOKIE_NAME = "set-cookie";
-    private static String COOKIE_NAME_CAMELCASE = "Set-Cookie";
-    private static String COOKIE_BPMCSRF = "BPMCSRF=";
-    private static String AUTH_COMPLETE_PROPERTY = "authCompleteCookie";
-    private static String BPMSESSIONID = "BPMSESSIONID";
-    private static String USERNAME = "UserName";
-    private static String BPMLOADER = "BPMLOADER";
-    private static String ASPXAUTH = ".ASPXAUTH";
-    private static String BPMCSRF = "BPMCSRF";
+    private static final String COOKIE_NAME = "set-cookie";
+    private static final String COOKIE_NAME_CAMELCASE = "Set-Cookie";
+    private static final String COOKIE_BPMCSRF = "BPMCSRF=";
+    private static final String AUTH_COMPLETE_PROPERTY = "authCompleteCookie";
+    private static final String BPMSESSIONID = "BPMSESSIONID";
+    private static final String USERNAME = "UserName";
+    private static final String BPMLOADER = "BPMLOADER";
+    private static final String ASPXAUTH = ".ASPXAUTH";
+    private static final String BPMCSRF = "BPMCSRF";
 
     /**
      * Set the authentication cookie values to context reading from the HTTP Headers
+     *
      * @param context - messageContext
      * @return boolean - true or false
      */
@@ -61,7 +59,7 @@ public class BPMCSRFCookie extends AbstractMediator {
 
         if (headerMap.containsKey(COOKIE_NAME_CAMELCASE) || headerMap.containsKey(COOKIE_NAME)) {
             String cookie = headerMap.get(COOKIE_NAME_CAMELCASE);
-            if(cookie.isEmpty()){
+            if (cookie.isEmpty()) {
                 cookie = headerMap.get(COOKIE_NAME);
             }
             String authCookiesVal = cookie.split(";")[0];
@@ -78,7 +76,7 @@ public class BPMCSRFCookie extends AbstractMediator {
                 cookies = excessHeadersMap.get(COOKIE_NAME);
             }
             if (cookies != null) {
-                for(String cookie : cookies) {
+                for (String cookie : cookies) {
                     String authCookiesVal = cookie.split(";")[0];
                     cookiesMap.put(authCookiesVal.split("=")[0], cookie.split(";")[0]);
                     if (cookie.contains(COOKIE_BPMCSRF)) {
@@ -94,11 +92,12 @@ public class BPMCSRFCookie extends AbstractMediator {
 
     /**
      * Get the total cookie values for Authentication
+     *
      * @param cookiesMap
      * @param allCookies
      * @return String value with the all cookie information
      */
-    private String  loadAllCookies(Map<String, String> cookiesMap, String allCookies) {
+    private String loadAllCookies(Map<String, String> cookiesMap, String allCookies) {
 
         allCookies = getCookieVal(cookiesMap, BPMSESSIONID, allCookies);
         allCookies = getCookieVal(cookiesMap, USERNAME, allCookies);
@@ -110,6 +109,7 @@ public class BPMCSRFCookie extends AbstractMediator {
 
     /**
      * Extract individual cookie values
+     *
      * @param cookieMap
      * @param cookieName
      * @param totalCookies

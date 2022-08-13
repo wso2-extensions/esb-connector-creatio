@@ -20,13 +20,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>org.wso2.carbon.connector</groupId>
-        <version>1.1.0</version>
+        <version>1.0.0</version>
         <artifactId>esb-connector-creatio</artifactId>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>creatiocrm</artifactId>
     <packaging>jar</packaging>
-    <name>WSO2 Carbon - Mediation Library Connector For creatiocrm</name>
+    <name>WSO2 Carbon - Mediation Library Connector For creatio</name>
     <properties>
         <connector.name>creatiocrm</connector.name>
         <product.ei.version>6.5.0</product.ei.version>

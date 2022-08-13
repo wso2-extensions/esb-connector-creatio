@@ -24,7 +24,6 @@ import org.testng.annotations.Test;
 import org.wso2.connector.integration.test.base.ConnectorIntegrationTestBase;
 import org.wso2.connector.integration.test.base.RestResponse;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,8 +32,6 @@ public class CreatioCRMRestConnectorIntegrationTest extends ConnectorIntegration
     private final Map<String, String> eiRequestHeadersMap = new HashMap<String, String>();
 
     private final Map<String, String> apiRequestHeadersMap = new HashMap<String, String>();
-
-    private String apiUrlEndPoint;
 
     /**
      * Set up the environment.
@@ -59,7 +56,6 @@ public class CreatioCRMRestConnectorIntegrationTest extends ConnectorIntegration
         Assert.assertTrue(esbRestResponse.getHeadersMap().containsKey("BPMCSRF"));
         Assert.assertTrue(esbRestResponse.getHeadersMap().containsKey("Cookie"));
     }
-
 
     @Test(groups = {"wso2.ei"}, description = "Creatio Contact integration test for CRUD API call with Auth data")
     public void contactTestWithAuth() throws Exception {
@@ -196,7 +192,6 @@ public class CreatioCRMRestConnectorIntegrationTest extends ConnectorIntegration
                 apiRequestHeadersMap);
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 204);
     }
-
 
     @Test(groups = {"wso2.ei"}, description = "Creatio Account integration test for CRUD API call with Auth data")
     public void accountTestWithAuth() throws Exception {
