@@ -14,9 +14,8 @@ STEPS:
 
 1. Download EI 6.5.0 by navigating the following the URL: https://wso2.com/integration/.
 
-2. Get a clone or download the source from [Github](https://github.com/anusharp/CreatioConnector).
-   Run the following Maven command from the `CookieMediator` directory: `mvn clean install`.
-   Copy the CookieMediator-1.0.0-SNAPSHOT.jar into <EI-HOME>/dropins directoryin extracted product pack 
+2. Get a clone or download the source from [Github](https://github.com/wso2-extensions/esb-connector-creatio).
+
 3. Compress the EI zip and place it in "{CONNECTOR_HOME}/esb-connector-creatio-crm/repository/"
 
 4. Go to "{CONNECTOR_HOME}/esb-connector-creatio-crm/" and type "mvn clean install -Dskip-tests=false" to test and build.

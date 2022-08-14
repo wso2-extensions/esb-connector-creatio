@@ -22,12 +22,6 @@ Follow the steps given below to build the Creatio REST connector from the source
 2. Run the following Maven command from the `esb-connector-creatiocrm` directory: `mvn clean install`.
 3. The Creatio connector zip file is created in the `esb-connector-creatiocrm/target` directory
 
-Follow the steps given below to build the Class mediation which is dependency library:
-
-1. Get a clone or download the source from [Github](https://github.com/wso2-extensions/esb-connector-creatio).
-2. Run the following Maven command from the `CookieMediator` directory: `mvn clean install`.
-3. Copy the CookieMediator-1.0.0-SNAPSHOT.jar into <EI-HOME>/micro-integrator/dropins directory
-
 #### Deploy connector with mediator implemented CAR file
 
 1. Add connector creatiocrm-connector-1.1.0.zip to Integration Studio inorder to work with EI tooling, see [Working with Connectors via Tooling](https://docs.wso2.com/display/EI650/Working+with+Connectors+via+Tooling) and create the mediation
@@ -54,6 +48,17 @@ Headers :
     Content-Length :
 ```
 6. ## Authentication Operation
+
+Provide the Creatio Hostname and Admin user credentials under username and password
+```
+    <creatiocrm.init>
+        <hostName>${Creatio hostname}</hostName>
+        <password>${Admin passowrd}</password>
+        <username>${Admin username}</username>
+        <timeout>${timeout Value}</timeout>
+    </creatiocrm.init>
+    <creatiocrm.authSession/>
+```
 
 7. ## Contact Operations
 

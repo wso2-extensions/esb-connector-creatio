@@ -1,6 +1,6 @@
 # Creatio REST EI Connector
 
-The Creatio REST Connector allows you to work with below CRM functionalities.
+The Creatio REST Connector allows you to work with below Creatio API functionalities.
 
 Contact CRUD operation
 Account CRUD operation
@@ -22,12 +22,6 @@ Follow the steps given below to build the Creatio REST connector from the source
 2. Run the following Maven command from the `esb-connector-creatiocrm` directory: `mvn clean install`.
 3. The Creatio connector zip file is created in the `esb-connector-creatiocrm/target` directory
 
-Follow the steps given below to build the Class mediation whihc is dependecy library:
-
-1. Get a clone or download the source from [Github](https://github.com/wso2-extensions/esb-connector-creatio/).
-2. Run the following Maven command from the `CookieMediator` directory: `mvn clean install`.
-3. Copy the CookieMediator-1.0.0-SNAPSHOT.jar into <EI-HOME>/micro-integrator/dropins directory
-
 #### Deploy connector with mediator implemented CAR file 
 
 1. Add connector creatiocrm-connector-1.1.0.zip to Integration Studio inorder to work with EI tooling, see [Working with Connectors via Tooling](https://docs.wso2.com/display/EI650/Working+with+Connectors+via+Tooling) and create the mediation
@@ -46,7 +40,7 @@ Follow the steps given below to build the Class mediation whihc is dependecy lib
 	./micro-integrator.sh
 ```
 
-5. Send the sample request to created mediation using CreatioCRM connector.
+5. Send the sample request to created mediation using Creatio connector.
 
 ## Headers
 
@@ -54,7 +48,18 @@ Headers :
 Content-Type: application/json
 Content-Length :
 
+6. ## Authentication Operation
 
+Provide the Creatio Hostname and Admin user credentials under username and password
+```
+    <creatiocrm.init>
+        <hostName>${Creatio hostname}</hostName>
+        <password>${Admin passowrd}</password>
+        <username>${Admin username}</username>
+        <timeout>${timeout Value}</timeout>
+    </creatiocrm.init>
+    <creatiocrm.authSession/>
+```
 ## Contact Operations
 
 1. Create Contact
