@@ -51,6 +51,7 @@ Content-Length :
 6. ## Authentication Operation
 
 Provide the Creatio Hostname and Admin user credentials under username and password
+
 ```
     <creatiocrm.init>
         <hostName>${Creatio hostname}</hostName>

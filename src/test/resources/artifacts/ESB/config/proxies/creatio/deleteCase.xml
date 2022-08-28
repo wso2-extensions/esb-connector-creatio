@@ -18,7 +18,7 @@
   ~
   -->
 <proxy xmlns="http://ws.apache.org/ns/synapse"
-       name="updateCase"
+       name="deleteCase"
        startOnLoad="true"
        statistics="disable"
        trace="disable"
@@ -27,26 +27,15 @@
         <inSequence>
             <property name="caseId" expression="get-property('axis2', 'REST_URL_POSTFIX')"/>
             <property expression="fn:substring($ctx:caseId, 12,36)" name="id" scope="default" type="STRING"/>
-            <payloadFactory media-type="json">
-                <format>{
-                    "UsrString7": "API Test",
-                    "UsrString10": "test1",
-                    "UsrString11": "test1",
-                    "UsrEmail" : "test@example.com"
-                    }
-                </format>
-            </payloadFactory>
-            <property name="ContentType" value="application/json" scope="axis2"/>
-            <property name="messageType" value="application/json" scope="axis2"/>
             <creatiocrm.init>
-                <hostName>https://hostname.creatio.com</hostName>
-                <password>password</password>
-                <username>username</username>
+                <hostName>https://uat-telecom.creatio.com</hostName>
+                <password>sd#@MTsuper1</password>
+                <username>Supervisor</username>
                 <timeout>2000</timeout>
             </creatiocrm.init>
-            <creatiocrm.caseUpdate>
+            <creatiocrm.caseDelete>
                 <id>{$ctx:id}</id>
-            </creatiocrm.caseUpdate>
+            </creatiocrm.caseDelete>
             <respond/>
         </inSequence>
         <outSequence/>
@@ -54,4 +43,3 @@
     </target>
     <description/>
 </proxy>
-

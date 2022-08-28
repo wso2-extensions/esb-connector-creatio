@@ -18,21 +18,24 @@
   ~
   -->
 <proxy xmlns="http://ws.apache.org/ns/synapse"
-       name="postAuth"
+       name="deleteContact"
        startOnLoad="true"
        statistics="disable"
        trace="disable"
        transports="http,https">
     <target>
         <inSequence>
-            <property name="httpMethod" value="post"/>
+            <property name="contactId" expression="get-property('axis2', 'REST_URL_POSTFIX')"/>
+            <property expression="fn:substring($ctx:contactId, 12,36)" name="id" scope="default" type="STRING"/>
             <creatiocrm.init>
-                <hostName>https://hostname.creatio.com</hostName>
-                <password>password</password>
-                <username>username</username>
-                <timeout>10000</timeout>
+                <hostName>https://uat-telecom.creatio.com</hostName>
+                <password>sd#@MTsuper1</password>
+                <username>Supervisor</username>
+                <timeout>2000</timeout>
             </creatiocrm.init>
-            <creatiocrm.authSession/>
+            <creatiocrm.contactDelete>
+                <id>{$ctx:id}</id>
+            </creatiocrm.contactDelete>
             <respond/>
         </inSequence>
         <outSequence/>
@@ -40,4 +43,3 @@
     </target>
     <description/>
 </proxy>
-

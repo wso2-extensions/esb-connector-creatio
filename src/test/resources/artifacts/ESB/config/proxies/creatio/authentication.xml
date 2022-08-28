@@ -18,24 +18,21 @@
   ~
   -->
 <proxy xmlns="http://ws.apache.org/ns/synapse"
-       name="getCase"
+       name="postAuth"
        startOnLoad="true"
        statistics="disable"
        trace="disable"
        transports="http,https">
     <target>
         <inSequence>
-            <property name="caseId" expression="get-property('axis2', 'REST_URL_POSTFIX')"/>
-            <property expression="fn:substring($ctx:caseId, 9,36)" name="id" scope="default" type="STRING"/>
+            <property name="httpMethod" value="post"/>
             <creatiocrm.init>
-                <hostName>https://hostname.creatio.com</hostName>
-                <password>password</password>
-                <username>username</username>
-                <timeout>2000</timeout>
+                <hostName>https://uat-telecom.creatio.com</hostName>
+                <password>sd#@MTsuper1</password>
+                <username>Supervisor</username>
+                <timeout>10000</timeout>
             </creatiocrm.init>
-            <creatiocrm.caseGet>
-                <id>{$ctx:id}</id>
-            </creatiocrm.caseGet>
+            <creatiocrm.authSession/>
             <respond/>
         </inSequence>
         <outSequence/>
@@ -43,4 +40,3 @@
     </target>
     <description/>
 </proxy>
-

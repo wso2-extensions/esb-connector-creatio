@@ -28,9 +28,9 @@
             <property name="accountId" expression="get-property('axis2', 'REST_URL_POSTFIX')"/>
             <property expression="fn:substring($ctx:accountId, 12,36)" name="id" scope="default" type="STRING"/>
             <creatiocrm.init>
-                <hostName>https://hostname.creatio.com</hostName>
-                <password>password</password>
-                <username>username</username>
+                <hostName>https://uat-telecom.creatio.com</hostName>
+                <password>sd#@MTsuper1</password>
+                <username>Supervisor</username>
                 <timeout>2000</timeout>
             </creatiocrm.init>
             <creatiocrm.accountDelete>
@@ -43,4 +43,3 @@
     </target>
     <description/>
 </proxy>
-
