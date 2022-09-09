@@ -18,4 +18,8 @@ STEPS:
 
 3. Compress the EI zip and place it in "{CONNECTOR_HOME}/esb-connector-creatio-crm/repository/"
 
+4. Update the Creatio server hostname, admin user credentials ine below tags in artifacts of the test/resources/artifacts/ESB/config/proxies/creatio location
+   a.) <replace-with-creatio-host-name> Replace with Creatio Hostname
+   b.) <replace-with-creatio-password>  Replace with Creatio Admin Username
+   c.) <replace-with-creatio-username>  Replace with Creatio Admin password
 4. Go to "{CONNECTOR_HOME}/esb-connector-creatio-crm/" and type "mvn clean install -Dskip-tests=false" to test and build.
