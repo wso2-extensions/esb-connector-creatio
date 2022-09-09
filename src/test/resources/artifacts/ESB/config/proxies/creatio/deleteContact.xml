@@ -28,9 +28,9 @@
             <property name="contactId" expression="get-property('axis2', 'REST_URL_POSTFIX')"/>
             <property expression="fn:substring($ctx:contactId, 12,36)" name="id" scope="default" type="STRING"/>
             <creatiocrm.init>
-                <hostName>https://uat-telecom.creatio.com</hostName>
-                <password>sd#@MTsuper1</password>
-                <username>Supervisor</username>
+                <hostName><replace-with-creatio-host-name></hostName>
+                <password><replace-with-creatio-password></password>
+                <username><replace-with-creatio-username></username>
                 <timeout>2000</timeout>
             </creatiocrm.init>
             <creatiocrm.contactDelete>
