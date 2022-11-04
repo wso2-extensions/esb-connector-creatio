@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2022, WSO2 LLC (https://www.wso2.com) All Rights Reserved.
+  ~
+  ~ WSO2 LLC licenses this file to you under the Apache License,
+  ~ Version 2.0 (the "License"); you may not use this file except
+  ~ in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied.  See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+  ~
+  -->
+<template name="authSession" xmlns="http://ws.apache.org/ns/synapse">
+    <sequence>
+        <property name="REST_URL_POSTFIX" action="remove" scope="axis2"/>
+        <property name="Accept-Encoding" scope="transport" action="remove"/>
+        <property expression="fn:concat($ctx:creatioHostName, '/ServiceModel/AuthService.svc/Login')"
+                  name="uri.var.authEndpointUrl" scope="default" type="STRING"/>
+        <script language="js"><![CDATA[var timeout = mc.getProperty("timeout");
+                if (timeout == null || timeout == "") {
+                    timeout = 10000;
+                }
+                mc.setProperty("timeout", timeout.toString());]]></script>
+        <property name="DISABLE_CHUNKING" value="true" scope="axis2"/>
+        <filter regex="true" source="boolean($ctx:creatioPassword) and boolean($ctx:creatioPassword)">
+            <then>
+                <property action="remove" name="Accept-Encoding" scope="transport"/>
+                <payloadFactory media-type="json">
+                    <format>
+                        {
+                        "UserName": "$1", "UserPassword":"$2"
+                        }
+                    </format>
+                    <args>
+                        <arg evaluator="xml" expression="$ctx:creatioUsername"/>
+                        <arg evaluator="xml" expression="$ctx:creatioPassword"/>
+                    </args>
+                </payloadFactory>
+                <call>
+                    <endpoint>
+                        <http method="post" uri-template="{uri.var.authEndpointUrl}">
+                            <timeout>
+                                <duration>{$ctx:timeout}</duration>
+                                <responseAction>fault</responseAction>
+                            </timeout>
+                        </http>
+                    </endpoint>
+                </call>
+                <filter source="$axis2:HTTP_SC" regex="200">
+                    <then>
+                        <class description="Set the BPMCSRF value to authCookie"
+                               name="org.wso2.carbon.connector.creatiocrm.headers.BPMCSRFCookie"/>
+                        <header expression="$ctx:BPMCSRF" name="BPMCSRF" scope="transport"/>
+                        <header expression="$ctx:authCompleteCookie" name="Cookie" scope="transport" type="STRING"/>
+                        <property name="Set-Cookie" scope="transport" action="remove"/>
+                        <property name="set-cookie" scope="transport" action="remove"/>
+                    </then>
+                    <else>
+                        <log description="header" level="custom">
+                            <property expression="$ctx:BPMCSRF" name="Auth cookie is not found"/>
+                        </log>
+                    </else>
+                </filter>
+            </then>
+            <else/>
+        </filter>
+    </sequence>
+</template>
