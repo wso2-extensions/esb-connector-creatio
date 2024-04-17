@@ -8,5 +8,17 @@
     "labels": [
         "CRM"
     ],
-    "releases": []
+    "releases": [
+        {
+            "tagName": "1.0.0",
+            "products": [
+                "MI 4.1.0",
+                "MI 4.0.0",
+                "EI 7.1.0",
+                "EI 7.0.x",
+                "EI 6.6.0",
+                "EI 6.5.0"
+            ]
+        }
+    ]
 }
