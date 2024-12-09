@@ -1,10 +1,15 @@
 {
     "name": "Creatio Connector",
     "owner": "WSO2",
+    "product": "MI",
     "category": "Customer Relationship Management",
     "documentationUrl": "https://github.com/wso2-extensions/esb-connector-creatio",
+    "mavenGroupId": "org.wso2.integration.connector",
+    "mavenArtifactId": "mi-connector-creatiocrm",
     "description": "The Creatio Connector allows you to work with almost all the entities and functionalities of Creatio through REST interface, a web-based service that allows organisations to manage Customer Relationship Management (CRM) data while integration with external services/applications. You can use the Creatio connector to create, query, retrieve, update, and delete any of the objects that are exposed through the Creatio REST API layer by adding the authentication. It contains Contact, Case and Account mediators to manage CRUD operations through REST APIs. The Creatio Connector was contributed by Mitra Innovation.",
     "status": "Active",
+    "rank": 8,
+    "type": "Connector",
     "labels": [
         "CRM"
     ],
@@ -15,6 +20,99 @@
                 "MI 4.1.0",
                 "MI 4.0.0",
                 "MI 1.2.0"
+            ],
+            "operations": [
+                {
+                    "name":"init",
+                    "description":"Initial configuration file for Creatio CRM connector",
+                    "isHidden":false
+                },
+                {
+                    "name":"callWithRetry",
+                    "description":"Templating the retry call",
+                    "isHidden":false
+                },
+                {
+                    "name":"callOptions",
+                    "description":"Templating the http call types GET, PUT, POST, DELETE etc.",
+                    "isHidden":false
+                },
+                {
+                    "name":"creatioCRMRequestHeader",
+                    "description":"Creatio CRM APIs headers",
+                    "isHidden":false
+                },
+                {
+                    "name":"authSession",
+                    "description":"Creatio CRM APIs headers",
+                    "isHidden":false
+                },
+                {
+                    "name":"contactCreate",
+                    "description":"Create the contact",
+                    "isHidden":false
+                },
+                {
+                    "name":"contactGet",
+                    "description":"get the Contact using ID",
+                    "isHidden":false
+                },
+                {
+                    "name":"contactDelete",
+                    "description":"Delete the contact using ID",
+                    "isHidden":false
+                },
+                {
+                    "name":"contactUpdate",
+                    "description":"Update the contact",
+                    "isHidden":false
+                },
+                {
+                    "name":"caseCreate",
+                    "description":"Create the Case",
+                    "isHidden":false
+                },
+                {
+                    "name":"caseGet",
+                    "description":"get the Case using ID",
+                    "isHidden":false
+                },
+                {
+                    "name":"caseDelete",
+                    "description":"Delete the Case using ID",
+                    "isHidden":false
+                },
+                {
+                    "name":"caseUpdate",
+                    "description":"Update the Case",
+                    "isHidden":false
+                },
+                {
+                    "name":"accountCreate",
+                    "description":"Create the account",
+                    "isHidden":false
+                },
+                {
+                    "name":"accountGet",
+                    "description":"get the account using ID",
+                    "isHidden":false
+                },
+                {
+                    "name":"accountDelete",
+                    "description":"Delete the account using ID",
+                    "isHidden":false
+                },
+                {
+                    "name":"accountUpdate",
+                    "description":"Update the account",
+                    "isHidden":false
+                }
+            ]
+            "connections": [
+                {
+                    "name": "creatiocrm",
+                    "description": "Connection for connecting to Creatio CRM system."
+                }
             ],
             "isHidden": false
         }
