@@ -25,5 +25,6 @@
         <dependency component="creatiocrm-account"/>
         <description>wso2 connector for creatiocrm REST API</description>
     </component>
+    <displayName>Creatio</displayName>
     <icon>icon/icon-small.png</icon>
 </connector>
