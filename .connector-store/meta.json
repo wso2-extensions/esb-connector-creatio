@@ -107,7 +107,7 @@
                     "description":"Update the account",
                     "isHidden":false
                 }
-            ]
+            ],
             "connections": [
                 {
                     "name": "creatiocrm",
